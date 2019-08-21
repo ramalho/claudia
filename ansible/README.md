@@ -1,5 +1,4 @@
-# Ansible setup
-
+## Ansible setup
 
 1. Activate your target virtual env
 1. `pip install ansible`
@@ -7,8 +6,30 @@
 
 Note: Normally, you deploy ssh keys to each ansible target. In our case, we want to support frequent drive reformatting, so we will install sshpass to allow Ansible to use plain ssh user / password.
 
+## Deploy to cloudhina
 
-## Use
+Most common operation: update project code on each pi:
+
+```bash
+ansible-playbook -i inventory.yaml 2.install_project.yaml
+```
+
+If pi's have joined a new network, run a network scan and identify the new IPs, set them in `./ansible/inventory.yaml`
+
+If pi's have been reset, install all software on each pi:
+
+```
+ansible-playbook -i inventory.yaml 0.setup.yaml
+```
+
+You can verify that inventory claudia_1 is assigned the correct IP address with:
+
+```
+ansible-playbook -i inventory.yaml -l claudia_1 1.identify_nodes.yaml
+```
+
+
+## How to use Ansible - general guidance
 
 If the pi's IPs have changed, gather all raspberry pi IPs and update `ansible/inventory.yaml`.
 
@@ -43,19 +64,6 @@ changed: [claudia_1]
 PLAY RECAP *****************************************************************************************************************************************************************
 claudia_1                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
-
-## Initial setup
-
-If pi's have been reset, or joined a new network, run a network scan and identify the new IPs, set them in `./ansible/inventory.yaml`
-
-Use ansible to install all software: `ansible-playbook -i inventory.yaml 0.setup.yaml`
-
-You can verify that inventory claudia_1 is assigned the correct IP address with:
-
-```
-ansible-playbook -i inventory.yaml -l claudia_1 1.identify_nodes.yaml
-```
-
 
 ## Troubleshooting and other tips
 
