@@ -1,6 +1,16 @@
 # Building Claudia
 
 
+## Project setup
+
+* Python3 (3.7.3)
+* Python project
+    * `pip install -r requirement.txt`
+* Ansible support
+    * `pip install ansible` - frequently done globally, so excluded from requirements.txt
+    * Install "sshpass": `brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb`
+
+
 ## Automating Raspberry Pi Setup With Ansible
 
 http://www.hietala.org/automating-raspberry-pi-setup-with-ansible.html
@@ -35,3 +45,4 @@ claudia3 - 192.168.86.92
 claudia4 - 192.168.86.93
 claudia5 - 192.168.86.94
 ```
+
