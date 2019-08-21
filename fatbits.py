@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+
+FONT_PBM_DATA = '''
+P1
+# Created by GIMP version 2.10.10 PNM plug-in
+5 106
+01110
+10001
+10011
+10101
+11001
+10001
+01110
+00000
+00000
+00000
+00000
+00100
+01100
+00100
+00100
+00100
+00100
+01110
+00000
+00000
+00000
+00000
+01110
+10001
+00001
+00110
+01000
+10000
+11111
+00000
+000000000000000111110000100010001100000110001011100000000000
+0000000000000100011001010100101111100010000100000000000000000000011111
+1000011110000010000110001011100000000000000000000000111010001000011110
+1000110001011100000000000000000000011111000010001000100010000100001000
+0000000000000000000001110100011000101110100011000101110000000000000000
+0000001110100011000101111000010001011100
+'''
+
+CELL_HEIGHT = 11
+GLYPH_HEIGHT = 7
+GLYPH_WIDTH = 5
+
+def load_font():
+	glyphs = {}
+	pixels = ''.join(FONT_PBM_DATA.split('\n')[4:])
+	for digit in range(10):
+		octets = []
+		for offset in range(GLYPH_HEIGHT):
+			start = digit * CELL_HEIGHT * GLYPH_WIDTH + offset * GLYPH_WIDTH
+			end = start + GLYPH_WIDTH
+			bits = int(pixels[start:end], 2)
+			octets.append(bits)
+			print(digit, offset, start, end, 
+				format(bits, '05b'), sep='\t')
+		print('digit', 'offset', 'start', 'end', sep='\t')
+		glyphs[str(digit)] = bytes(octets)
+	return glyphs
+
+def bitmap(char):
+	return glyphs[char]
+
+
+glyphs = load_font()
