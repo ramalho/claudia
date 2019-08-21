@@ -1,0 +1,28 @@
+---
+- name: Clone the standupdev/claudia, install deps
+  hosts: all
+  # Allow us to create project dir at /
+  become: true
+
+  vars:
+    project_dir: /app
+
+  tasks:
+    - name: Remove existing app
+      file:
+        state: absent
+        path: "{{ project_dir }}"
+
+    - name: Pull GitHub repo
+      git:
+        repo: https://github.com/standupdev/claudia.git
+        version: master
+        dest: "{{ project_dir }}"
+
+    - name: Install python deps
+      pip:
+        executable: pip3
+        requirements: "{{ project_dir }}/requirements.txt"
+        state: present
+
+

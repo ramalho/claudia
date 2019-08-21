@@ -1,0 +1,13 @@
+---
+- name: Identify nodes by playing a unicorn demo
+  gather_facts: no
+  hosts: all
+  # This allows us to run a unicorn script script - be root
+  become: true
+
+  tasks:
+  - name: Run unicorn script
+    # Run the demo for 3s, kill it, return success
+    shell: curl https://raw.githubusercontent.com/pimoroni/unicorn-hat/master/examples/demo.py | timeout 3 python3; exit 0
+    args:
+      warn: no

@@ -1,0 +1,49 @@
+---
+- name: Setup keys and python on all the pi's
+  hosts: all
+  # This allows us to run a script
+  become: true
+
+  tasks:
+  - name: Install my ssh keys on the pi's
+    # Support changing user ssh password
+    authorized_key:
+      user: pi
+      state: present
+      key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+  - name: Install git
+    # Used to pull project repo
+    apt:
+      force_apt_get: yes
+      name: git
+      state: present
+
+  - name: Install python3-pip
+    # Unicorn hat setup
+    apt:
+      force_apt_get: yes
+      name: python3-pip
+      state: present
+
+  - name: Install python3-dev
+    # Unicorn hat setup
+    apt:
+      force_apt_get: yes
+      name: python3-dev
+      state: present
+
+  - name: Install unicornhat
+    # Unicorn hat setup
+    pip:
+      # e.g. version control
+      # name: bottle>0.10,<0.20,!=0.11
+      executable: pip3
+      name: unicornhat
+      state: present
+
+  - name: Prove unicorn hat working
+    # Run the demo for 3s, kill it, return success
+    shell: curl https://raw.githubusercontent.com/pimoroni/unicorn-hat/master/examples/demo.py | timeout 3 python3; exit 0
+    args:
+      warn: no

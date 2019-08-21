@@ -1,0 +1,31 @@
+---
+all:
+  vars:
+    ansible_connection: ssh
+    ansible_user: pi
+    ansible_ssh_pass: raspberry
+
+  hosts:
+    # When you plug the raspberries into a new lan, list the ips and record here
+    claudia_1:
+      ansible_host: 192.168.86.86
+      ansible_python_interpreter: /usr/bin/python3
+    claudia_2:
+      ansible_host: 192.168.86.91
+      ansible_python_interpreter: /usr/bin/python3
+    claudia_3:
+      ansible_host: 192.168.86.92
+      ansible_python_interpreter: /usr/bin/python3
+    claudia_4:
+      ansible_host: 192.168.86.93
+      ansible_python_interpreter: /usr/bin/python3
+    claudia_5:
+      ansible_host: 192.168.86.94
+      ansible_python_interpreter: /usr/bin/python3
+
+#    all:
+#      claudia_1:
+#      claudia_2:
+#      claudia_3:
+#      claudia_4:
+#      claudia_5:
