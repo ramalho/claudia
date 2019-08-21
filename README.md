@@ -1,5 +1,10 @@
 # Building Claudia
 
+
+## Automating Raspberry Pi Setup With Ansible
+
+http://www.hietala.org/automating-raspberry-pi-setup-with-ansible.html
+
 ## Installing the Unicorn Hat library
 
 Source: https://github.com/pimoroni/unicorn-hat
