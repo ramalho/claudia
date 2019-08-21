@@ -1,7 +1,7 @@
 ---
 - name: Setup keys and python on all the pi's
   hosts: all
-  # This allows us to run a script
+  # This allows us to run a unicorn script
   become: true
 
   tasks:
