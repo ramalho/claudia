@@ -4,7 +4,7 @@
 
 Build a transportable mini-lab for visual experimentation of distributed systems.
 
-![Picture of Claudia](https://raw.githubusercontent.com/standupdev/claudia/master/img/claudia.jpg)
+![Picture of Claudia](https://raw.githubusercontent.com/standupdev/claudia/master/img/claudia-443x500.jpg)
 
 **Claudia** includes:
 
