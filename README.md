@@ -1,7 +1,19 @@
 # Building Claudia
 
+## Project idea
 
-## Project setup
+Build a transportable mini-lab for visual experimentation of distributed systems.
+
+![Picture of Claudia](https://raw.githubusercontent.com/standupdev/claudia/master/img/claudia.jpg)
+
+**Claudia** includes:
+
+- 5 × Rasperry Pi 3 with Unicorn hats (8×8 RGB LED arrays)
+- 1 × NETGEAR 5-port Gigabit Ethernet Smart Managed Plus Switch GS105E
+- 1 × Ubiquiti 5-port EdgeRouter X Advanced Gigabit Ethernet Router
+
+
+## Setup
 
 * Python3 (3.7.3)
 * Python project
